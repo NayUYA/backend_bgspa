@@ -24,7 +24,7 @@ public class CategoriasService {
 	
 	public Categorias getCategoria(Long id){
 		return categoriasRepository.findById(id).orElseThrow( 
-				()->new IllegalArgumentException("El producto con id" +id +"no existe.")
+				()->new IllegalArgumentException("La categoria con id" +id +"no existe.")
 				);
 	}//getCategoria
 	

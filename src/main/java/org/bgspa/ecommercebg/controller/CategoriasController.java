@@ -27,8 +27,8 @@ public class CategoriasController {
 		return categoriasService.getCategorias();
 	}//getAllpro
 	
-	@GetMapping (path="{prodId}") // http
-	public Categorias getCategorias(@PathVariable("prodId")Long id){
+	@GetMapping (path="{cateId}") // http
+	public Categorias getCategorias(@PathVariable("cateId")Long id){
 		return categoriasService.getCategoria(id);
 	}//getAllpro
 		
