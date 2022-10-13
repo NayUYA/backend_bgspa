@@ -33,5 +33,9 @@ public class ProductoController {
 			return productoService.getProducto(id);
 		}//getAllpro
 		
+		
+		
+		
+		
 
 }
