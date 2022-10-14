@@ -37,8 +37,21 @@ public class CategoriasController {
 		return categoriasService.getCategorias(id);
 	}//getAllpro
 	
+	@DeleteMapping (path = "{cateId}") 
+	public Categorias deleteCategorias(@PathVariable("cateId") Long id) {
+		return categoriasService.deleteCategorias(id);
+	}//deleteCategoria
 	
-
-
+	@PostMapping
+	public Categorias addCategorias(@RequestBody Categorias categorias) {
+		return categoriasService.addCategorias(categorias);
+	}//addCategoria
+	
+	@PutMapping(path = "{cateId}") 
+	public Categorias updateCategorias(@PathVariable("cateId") Long id,
+			@RequestParam(required = false) String nombre){
+			return categoriasService.updateCategorias(id, nombre);
+	}//updateCategoria
+	
 
 }
