@@ -22,10 +22,12 @@ public class CategoriasService {
 		return categoriasRepository.findAll();
 	}//getCategorias
 	
-	public Categorias getCategoria(Long id){
+	public Categorias getCategorias(Long id){
 		return categoriasRepository.findById(id).orElseThrow( 
 				()->new IllegalArgumentException("La categoria con id" +id +"no existe.")
 				);
 	}//getCategoria
+	
+	
 	
 }//class CategoriaService
