@@ -28,6 +28,30 @@ public class CategoriasService {
 				);
 	}//getCategoria
 	
+	public Categorias deleteCategorias (Long id) {
+		Categorias tmpProd = null;
+		if (categoriasRepository.existsById(id)) {
+			tmpProd = categoriasRepository.findById(id).get();
+			categoriasRepository.deleteById(id);
+		}//if exist
+		return tmpProd;
+	}//deleteCategoria
+	
+	public Categorias addCategorias(Categorias categorias) {
+		return categoriasRepository.save(categorias);
+	}//addCategoria
+	
+	public Categorias updateCategorias(Long id, String nombre) {
+		Categorias tmpProd = null;
+		if (categoriasRepository.existsById(id)) {
+			tmpProd = categoriasRepository.findById(id).get();
+			if (nombre!=null) tmpProd.setNombre(nombre);
+			categoriasRepository.save(tmpProd);
+		}else {
+			System.out.println("Update - La categoría con el id " + id + "no existe.");
+		}//else
+		return tmpProd;
+	}//updateCategoria
 	
 	
 }//class CategoriaService
