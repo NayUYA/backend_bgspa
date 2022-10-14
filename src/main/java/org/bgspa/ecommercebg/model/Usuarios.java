@@ -1,10 +1,14 @@
 package org.bgspa.ecommercebg.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="usuarios")
 public class Usuarios {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY) 
@@ -84,9 +88,4 @@ public class Usuarios {
 				+ ", email=" + email + ", contrasena=" + contrasena + "]";
 	}
 
-
-	
-	
-	
-	
 }// class usuarios
