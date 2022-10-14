@@ -1,15 +1,21 @@
 package org.bgspa.ecommercebg.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="producto")
 
 public class Producto {
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY) //se genera en automatico mi id
-	@Column (name="id", unique=true, nullable=false) // es unico y no es nulo
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column (name="id", unique=true, nullable=false) 
 
 	private Long id; //read-only
 	private String nombre;
