@@ -6,11 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+//<<<<<<< HEAD
+//=======
 
 
 @Entity
 @Table(name="usuarios")
-
+//>>>>>>> 3bf4c7a04866d9f3fc521899b9facf3c04520e93
 public class Usuarios {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY) 
@@ -90,9 +92,4 @@ public class Usuarios {
 				+ ", email=" + email + ", contrasena=" + contrasena + "]";
 	}
 
-
-	
-	
-	
-	
 }// class usuarios
