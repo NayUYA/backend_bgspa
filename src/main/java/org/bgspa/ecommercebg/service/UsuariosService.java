@@ -43,14 +43,14 @@ public class UsuariosService {
 	}
 	
 	// update usuario
-	public Usuarios updateUsuarios(Long id, String nombre, String apellido, String telefono, String email, String contrasena) {
+	public Usuarios updateUsuarios(Long id, String nombre, String apellido, String telefono, String usuario, String contrasena) {
 		Usuarios tmpUser = null;
 		if (usuariosRepository.existsById(id)) {
 			tmpUser = usuariosRepository.findById(id).get();
 			if (nombre != null) tmpUser.setNombre(nombre);
 			if (apellido != null) tmpUser.setApellido(apellido);
 			if (telefono != null) tmpUser.setTelefono(telefono);
-			if (email != null) tmpUser.setEmail(email);
+			if (usuario != null) tmpUser.setUsuario(usuario);;
 			if (contrasena != null) tmpUser.setContrasena(contrasena);
 			usuariosRepository.save(tmpUser);
 		} else {

@@ -56,9 +56,9 @@ public class UsuariosController {
 			@RequestParam(required = false) String nombre,
 			@RequestParam(required = false) String apellido,
 			@RequestParam(required = false) String telefono,
-			@RequestParam(required = false) String email,
+			@RequestParam(required = false) String usuario,
 			@RequestParam(required = false) String contrasena) {
-		return usuariosService.updateUsuarios(id, nombre, apellido, telefono, email, contrasena);
+		return usuariosService.updateUsuarios(id, nombre, apellido, telefono, usuario, contrasena);
 		
 	}
 	
