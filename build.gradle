@@ -15,6 +15,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+<<<<<<< HEAD
+=======
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+>>>>>>> d4c54a3f86d2b38b5a5093ba57be601198b324cf
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
