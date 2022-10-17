@@ -1,7 +1,6 @@
 package org.bgspa.ecommercebg.controller;
 
-import java.util.List;
-
+import org.bgspa.ecommercebg.model.ChangePassword;
 import org.bgspa.ecommercebg.model.Usuarios;
 import org.bgspa.ecommercebg.service.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path="api/usuarios/")
+@RequestMapping(path="/api/usuarios/")
 public class UsuariosController {
 	private final UsuariosService usuariosService;
 	
@@ -27,10 +26,19 @@ public class UsuariosController {
 	}
 	
 	//Metodo get para la lista de usuarios
-	@GetMapping
-	public List<Usuarios> getAllusuarios(){
-		return usuariosService.getUsuarios();
-	}
+		//------------SOLO PARA LA CLASE USUARIO SE MANDO LLAMAR SIN LISTA-------------
+		/*
+		 @GetMapping
+		public List<Usuarios> getAllusuarios(){
+			return usuariosService.getUsuarios();
+		}
+		 */
+		
+		//--------------------
+		@GetMapping
+		public UsuariosService getUsuariosService(){
+			return usuariosService;
+		}
 	
 	//Metodo get para un usuario
 	@GetMapping (path="{userId}")
@@ -56,10 +64,11 @@ public class UsuariosController {
 			@RequestParam(required = false) String nombre,
 			@RequestParam(required = false) String apellido,
 			@RequestParam(required = false) String telefono,
-			@RequestParam(required = false) String usuario,
-			@RequestParam(required = false) String contrasena) {
-		return usuariosService.updateUsuarios(id, nombre, apellido, telefono, usuario, contrasena);
-		
-	}
+			//---Se añadio linea RequestBody
+			@RequestBody ChangePassword changePassword) {
+		return usuariosService.updateUsuarios(id, nombre, apellido, telefono, changePassword.getContrasena(),
+				changePassword.getNewContrasena());
+	}//updateUsuarios
 	
-}
+	
+}//class UsuariosController
