@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path="api/categorias/")
+@RequestMapping(path="/api/categorias/")
 public class CategoriasController {
 	
 	private final CategoriasService categoriasService ;
