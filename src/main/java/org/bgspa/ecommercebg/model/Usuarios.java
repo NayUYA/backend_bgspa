@@ -6,13 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-//<<<<<<< HEAD
-//=======
-
 
 @Entity
 @Table(name="usuarios")
-//>>>>>>> 3bf4c7a04866d9f3fc521899b9facf3c04520e93
+
 public class Usuarios {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY) 
@@ -21,17 +18,19 @@ public class Usuarios {
 	private String nombre;
 	private String apellido;
 	private String telefono;
-	private String email;
+	@Column (name="email", nullable=false)
+	private String usuario;
+	@Column (name="contrasena", nullable=false)
 	private String contrasena;
 	
 	//constructor
-	public Usuarios(Long id, String nombre, String apellido, String telefono, String email, String contrasena) {
+	public Usuarios(Long id, String nombre, String apellido, String telefono, String usuario, String contrasena) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.telefono = telefono;
-		this.email = email;
+		this.usuario = usuario;
 		this.contrasena = contrasena;
 	}
 	
@@ -41,6 +40,7 @@ public class Usuarios {
 	}
 	
 	//Getters and Setters
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -65,12 +65,12 @@ public class Usuarios {
 		this.telefono = telefono;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getContrasena() {
@@ -85,11 +85,13 @@ public class Usuarios {
 		return id;
 	}
 	
+	
 	//toString
 	@Override
 	public String toString() {
 		return "Usuarios [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono
-				+ ", email=" + email + ", contrasena=" + contrasena + "]";
+				+ ", usuario=" + usuario + ", contrasena=" + contrasena + "]";
 	}
 
+	
 }// class usuarios
