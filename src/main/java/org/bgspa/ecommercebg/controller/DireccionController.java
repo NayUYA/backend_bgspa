@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path="api/direccion/")
+@RequestMapping(path="/api/direccion/")
 public class DireccionController {
 	private final DireccionService direccionService;
 

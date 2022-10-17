@@ -11,8 +11,11 @@ public class ChangePassword {
 		this.contrasena = contrasena;
 		this.newContrasena = newContrasena;
 	}//constructor
-
 	
+	public ChangePassword() {
+		
+	}//constructor vacio
+
 	//getter y setter
 	
 	public String getContrasena() {
