@@ -65,6 +65,18 @@ public class UsuariosService {
 			}
 			return tmpUser;
 		}//updateUsuario
+		
+		public boolean validaUsuarios(Usuarios usuarios) {
+			boolean res = false;
+			Optional<Usuarios> userByUsuarios = usuariosRepository.findByUsuarios(usuarios.getUsuario());
+			if (userByUsuarios.isPresent()) {
+				Usuarios u = userByUsuarios.get();
+				if (u.getContrasena().equals(usuarios.getContrasena())) {
+					res = true;
+				}//if password
+			}//if
+			return res;
+		}//validaUsuarios
 	
 	
 }// class UsuariosService
