@@ -18,25 +18,9 @@ btnSubmit.addEventListener("click", function(e){
     let correoe = document.getElementById("correo");
     let valorcorreo = document.getElementById("correo").value;
     let contraseña = document.getElementById("contraseña");
-    let valorcontraseña = document.getElementById("contraseña").value;
+    let valorcontrasena = document.getElementById("contraseña").value;
    // let alerterror = document.getElementById("alertaerror");
     let formulario = document.getElementById("formulario");    
-	
-	//código para metodo fetch
-	let url= '/api/login/';
-	let data= {usuario: valorcorreo, contrasena:valorcontraseña};
-	console.log(JSON.stringify(data));
-	fetch(url,{
-		method: 'POST' ,
-		body: JSON.stringify(data),
-		headers:{
-			'Content-Type':'application/json'
-		}
-	}).then(res=> res.json())
-	.catch(error=> console.error('Error:', error))
-	.then(response=> localStorage.setItem("token",response.accessToken)); 
-	
-	
 	
     //VALIDACIONES DE FORMULARIO
     const flag = {
@@ -76,7 +60,7 @@ btnSubmit.addEventListener("click", function(e){
             flag.contraseña = false
     }
     }//cierra función contra
-    validarContraseña(valorcontraseña); 
+    validarContraseña(valorcontrasena); 
 
     // if (!(flag.correoe && flag.contraseña)){ SE ACTUALIZO POR UN DISEÑO DE MODAL
     //     alerterror.style.display = "block";
@@ -94,7 +78,7 @@ btnSubmit.addEventListener("click", function(e){
     let sesion = false;
     if(existenciaStorage){
         for (let i = 0; i < arregloUsuarios.length; i++) {
-            if((arregloUsuarios[i].correo === valorcorreo)&&(arregloUsuarios[i].contraseña === valorcontraseña)){
+            if((arregloUsuarios[i].correo === valorcorreo)&&(arregloUsuarios[i].contraseña === valorcontrasena)){
                 nombreUsuario = arregloUsuarios[i].name
                 localStorage.setItem("sesionIniciada", "true")
                 localStorage.setItem("nombreUsuario", nombreUsuario)
@@ -115,6 +99,36 @@ btnSubmit.addEventListener("click", function(e){
         
     
     }// if que exista algun usuario en el estorage
+    
+   if(flag.correoe && flag.contraseña){
+    //---------------------------------------------------------------
+	//código para metodo fetch
+	let url= '/api/login/';
+	let data= {usuario: valorcorreo, contrasena:valorcontrasena};
+	console.log(JSON.stringify(data));
+	fetch(url,{
+		method: 'POST' ,
+		body: JSON.stringify(data),
+		headers:{
+			'Content-Type':'application/json'
+		}
+	}).then(res=> res.json())
+	.catch(error=> console.error('Error:', error))
+	.then(response=> localStorage.setItem("token",response.accessToken)); 
+	//---------------------------------------------------------------
+	 localStorage.setItem("sesionIniciada", "true")
+	 AlertLogin();
+            setTimeout(()=>{location.href = "http://localhost:8080/index.html"}, (2500)); 
+    }else {
+            WarningLogin();
+            formulario.reset();
+            correoe.classList.remove("is-valid");
+            contraseña.classList.remove("is-valid");
+        }//else
+        
+    
+    
+   
 
 });//btnSubmit
 

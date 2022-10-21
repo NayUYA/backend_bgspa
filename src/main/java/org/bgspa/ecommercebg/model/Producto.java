@@ -22,20 +22,22 @@ public class Producto {
 	private String sku;
 	private String descripcion;
 	private double precio;
+	private String categoria;
 	@Column (name="img") //
 	private String img;
-	private String categoria;
+	
 	
 	//constructor
-	public Producto(Long id, String nombre, String sku, String descripcion, double precio, String img, String categoria) {
+	public Producto(Long id, String nombre, String sku, String descripcion, double precio, String categoria, String img) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.sku = sku;
 		this.descripcion = descripcion;
 		this.precio = precio;
-		this.img = img;
 		this.categoria = categoria;
+		this.img = img;
+		
 	}
 
 	//cosntructo vacio
@@ -97,12 +99,14 @@ public class Producto {
 	}
 
 	//to string
-
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", sku=" + sku + ", descripcion=" + descripcion
-				+ ", precio=" + precio + ", img=" + img + ", categoria=" + categoria + "]";
+				+ ", precio=" + precio + ", categoria=" + categoria + ", img=" + img + "]";
 	}
+
+	
+
 
 	
 	

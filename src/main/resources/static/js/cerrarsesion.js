@@ -5,14 +5,14 @@ if ((localStorage.getItem("sesionIniciada")) == "true"){
     let acceder1 = document.getElementsByClassName("acceder")[1]
     acceder.remove()
     acceder1.remove()
-    cerrarSesion.innerHTML = `<a class="btn my-2 my-sm-0" href="http://127.0.0.1:5503/index.html"><i class="bi bi-box-arrow-right bi-movil binav"></i></a>`
+    cerrarSesion.innerHTML = `<a class="btn my-2 my-sm-0" href="http://localhost:8080/index.html"><i class="bi bi-box-arrow-right bi-movil binav"></i></a>`
     cerrarSesion.addEventListener("click", function(e){
         localStorage.removeItem("sesionIniciada")
-        localStorage.removeItem("nombreUsuario")
+        localStorage.removeItem("token")
     })
-    cerrarSesion1.innerHTML = `<a class="btn my-2 my-sm-0" href="http://127.0.0.1:5503/index.html"><i class="bi bi-box-arrow-right bi-movil binav"></i></a>`
+    cerrarSesion1.innerHTML = `<a class="btn my-2 my-sm-0" href="http://localhost:8080/index.html"><i class="bi bi-box-arrow-right bi-movil binav"></i></a>`
     cerrarSesion1.addEventListener("click", function(e){
         localStorage.removeItem("sesionIniciada")
-        localStorage.removeItem("nombreUsuario")
+        localStorage.removeItem("token")
     })
     } 

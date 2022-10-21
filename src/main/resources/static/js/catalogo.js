@@ -63,7 +63,7 @@ function filtrar (event){
                 console.log(typeof(data));
                 data.forEach(item => {
                     //console.log(producto.id, producto.title);
-    				temsContainier.innerHTML += `<div class="${getClassCategory(item.categorias)} all col-md-3 col-lg-3 col-xl-3 col-sm-6">
+    				temsContainier.innerHTML += `<div class="${getClassCategory(item.categoria)} all col-md-3 col-lg-3 col-xl-3 col-sm-6">
 				    <div class="rd" style="width:auto;">
 				    <a href="#"><img src="${item.img}" class="card-img-top" data-toggle="modal" data-target="#modal_${item.id}" alt="..." /></a>
 				    </div>
