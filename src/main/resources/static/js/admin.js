@@ -43,32 +43,6 @@ btnSubmit.addEventListener("click", function(e){
     let enviosku= document.getElementById("campoSKU").value;
 
 	
-	
-	let url= '/api/productos/';	
-	
-	//arreglo nuevo
-	   let data = {
-        nombre: nombre.value,
-        sku: sku.value,
-        descripcion: descripcion.value,
-        precio: precio.value,
-        img:imgf,
-        categoria: categoria.value
-    	};
-		console.log(data);	
-	
-	//fetch
-	fetch(url,{
-		method: 'POST' ,
-		body: JSON.stringify(data),
-		headers:{
-			'Content-Type':'application/json'
-		}
-	}).then(res=> res.json())
-	.catch(error=> console.error('Error:', error))
-	
-	
-	/*
     ///JSON Y LOCAL STORAGE
     let arregloProductos = {
         "id" : cont,
@@ -79,10 +53,8 @@ btnSubmit.addEventListener("click", function(e){
         "categoria": categoria.value,
         "sku": enviosku
     };
-*/
+
     
-
-
 
     /* let id_row = 'row' + cont; //
     let fila_todascolumnas = `<tr id= ${id_row} row-sm-12 row-md-12 ><td> ${ident} </td><td>        
@@ -208,12 +180,44 @@ btnSubmit.addEventListener("click", function(e){
     validarS (enviosku);
 
 
-
+   //------------------------------------------------------
+        
+        let url= '/api/productos/';	
+	
+	//arreglo nuevo
+	   let data = {
+        nombre: nombre.value,
+        sku: sku.value,
+        descripcion: descripcion.value,
+        precio: precio.value,
+        img:imgf,
+        categoria: categoria.value
+    	};
+		console.log(data);	
+		
+		//fetch
+ const Prueba = () => {
+	fetch(url,{
+		method: 'POST' ,
+		body: JSON.stringify(data),
+		headers:{
+			'Content-Type':'application/json'
+		}
+	}).then(res=> res.json())
+	.catch(error=> console.error('Error:', error))
+	};
+	
+	//---------------------------------------------
 
     //ALERTA GENERAL
-    if (flag.nombre && flag.precio && flag.descripcion && flag.categoria && flag.archivo && flag.sku){
+    if (flag.nombre && flag.precio && flag.descripcion && flag.categoria && flag.archivo && flag.sku){     
+    Prueba();
+    
+  
+	
         cont++;
         ident++;
+        
         productos.push(arregloProductos);
         JSON.stringify(productos);
         localStorage.setItem(key, JSON.stringify(productos));
@@ -226,9 +230,11 @@ btnSubmit.addEventListener("click", function(e){
         categoria.classList.remove("is-valid")
         archivo.classList.remove("is-valid")
         sku.classList.remove("is-valid")
+        console.log("si funciona")
     } else {
         alerterror.style.display = "block";
         setTimeout(()=>{alerterror.style.display = "none"}, (7000));
+        console.log("no funciona")
     }
     
     /// añadir card a pagina admin
