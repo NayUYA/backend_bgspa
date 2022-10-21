@@ -4,8 +4,9 @@ let cont = 85;
 let ident = 0;
 let lista = document.getElementById("lista");
 let contenedor = document.querySelector("#conta");
-//const key = "productos";
+const key = "productos";
 let imgf ="";
+
 let archivo = document.getElementById("campoArchivo");
 let btnFake = document.getElementById("btnFake");
 
@@ -41,34 +42,8 @@ btnSubmit.addEventListener("click", function(e){
     let formulario = document.getElementById("formulario"); 
     let sku= document.getElementById("campoSKU");
     let enviosku= document.getElementById("campoSKU").value;
-
+	const imagen = URL.createObjectURL(archivo.files[0]);
 	
-	
-	let url= '/api/productos/';	
-	
-	//arreglo nuevo
-	   let data = {
-        nombre: nombre.value,
-        sku: sku.value,
-        descripcion: descripcion.value,
-        precio: precio.value,
-        img:imgf,
-        categoria: categoria.value
-    	};
-		console.log(data);	
-	
-	//fetch
-	fetch(url,{
-		method: 'POST' ,
-		body: JSON.stringify(data),
-		headers:{
-			'Content-Type':'application/json'
-		}
-	}).then(res=> res.json())
-	.catch(error=> console.error('Error:', error))
-	
-	
-	/*
     ///JSON Y LOCAL STORAGE
     let arregloProductos = {
         "id" : cont,
@@ -79,35 +54,10 @@ btnSubmit.addEventListener("click", function(e){
         "categoria": categoria.value,
         "sku": enviosku
     };
-*/
+
     
 
 
-
-    /* let id_row = 'row' + cont; //
-    let fila_todascolumnas = `<tr id= ${id_row} row-sm-12 row-md-12 ><td> ${ident} </td><td>        
-    ${nombre.value} </td><td> ${archivo.value} </td><td> ${descripcion.value} </td><td>$ ${parseFloat(precio.value)} </td><td> ${categoria.value} </td><td> ${sku.value} </td></tr>`;
-   
-    //Agregar a la tabla
-    $("#lista").append(fila_todascolumnas); //
-
-     //------------LocalStorage--------------------------------------
-     
-     //Comprobación de valores en la consola.
-     let n = nombre.value;
-     let a = archivo.value;
-     let d = descripcion.value;
-     let p = parseFloat(precio.value);
-     let c = categoria.value;
-     let s = sku.value
- 
- 
-     console.log(n);
-     console.log(a);
-     console.log(d);
-     console.log(p);
-     console.log(c);
-     console.log(s); */
 
      //VALIDACIONES DE FORMULARIO
      const flag = {
@@ -208,16 +158,42 @@ btnSubmit.addEventListener("click", function(e){
     validarS (enviosku);
 
 
-
+  
 
     //ALERTA GENERAL
-    if (flag.nombre && flag.precio && flag.descripcion && flag.categoria && flag.archivo && flag.sku){
+    if (flag.nombre && flag.precio && flag.descripcion && flag.categoria && flag.archivo && flag.sku){     
+     //------------------------------------------------------
+        let url= '/api/productos/';	
+	//arreglo nuevo
+	   let data = {
+        nombre: nombre.value,
+        sku: sku.value,
+        descripcion: descripcion.value,
+        precio: precio.value,
+        categoria: categoria.value,
+        img: imagen
+    	};
+		console.log(data);	
+		
+		//fetch
+	fetch(url,{
+		method: 'POST' ,
+		body: JSON.stringify(data),
+		headers:{
+			'Content-Type':'application/json'
+		}
+	}).then(res=> res.json())
+	.catch(error=> console.error('Error:', error))
+
+	//---------------------------------------------
+    
         cont++;
         ident++;
         productos.push(arregloProductos);
         JSON.stringify(productos);
-        localStorage.setItem(key, JSON.stringify(productos));
-        alertexitosa.style.display = "block";
+        sessionStorage.setItem(key, JSON.stringify(productos));
+        AlertAdmin();
+       // alertexitosa.style.display = "block";
         setTimeout(()=>{alertexitosa.style.display = "none"}, (5000));
         formulario.reset();
         nombre.classList.remove("is-valid")
@@ -226,13 +202,16 @@ btnSubmit.addEventListener("click", function(e){
         categoria.classList.remove("is-valid")
         archivo.classList.remove("is-valid")
         sku.classList.remove("is-valid")
+        console.log("si funciona")
     } else {
         alerterror.style.display = "block";
         setTimeout(()=>{alerterror.style.display = "none"}, (7000));
+        console.log("no funciona")
     }
     
     /// añadir card a pagina admin
-    let item = JSON.parse(localStorage.getItem(key));
+    let item = JSON.parse(sessionStorage.getItem(key));
+
 
     // es igual a un forEach
     for (let producto of item) {
@@ -249,3 +228,21 @@ btnSubmit.addEventListener("click", function(e){
           </div>`;
       }
 });
+
+
+  //-------ALERTA REGISTRO EN FLAGS GENERAL-------
+    const AlertAdmin = () => {
+        Swal.fire({
+                        position: 'center',
+                        color: '#A97798',
+                        background: '#F9F9F9',
+                        icon: 'success',
+                        title: 'Registro exitoso',
+                        text: 'Se ha añadido un nuevo producto a BG SPA.',
+                        confirmButtonText: 'Aceptar',
+                        confirmButtonColor: '#A058A1',
+                        showConfirmButton: true,
+                        showCloseButton: true,
+                        //toast: true
+                      }) 
+                    };

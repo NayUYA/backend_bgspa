@@ -22,20 +22,22 @@ public class Producto {
 	private String sku;
 	private String descripcion;
 	private double precio;
+	private String categoria;
 	@Column (name="img") //
 	private String img;
-	private String categorias;
+	
 	
 	//constructor
-	public Producto(Long id, String nombre, String sku, String descripcion, double precio, String img, String categorias) {
+	public Producto(Long id, String nombre, String sku, String descripcion, double precio, String categoria, String img) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.sku = sku;
 		this.descripcion = descripcion;
 		this.precio = precio;
+		this.categoria = categoria;
 		this.img = img;
-		this.categorias = categorias;
+		
 	}
 
 	//cosntructo vacio
@@ -88,21 +90,23 @@ public class Producto {
 	}
 	
 	
-	public String getCategorias() {
-		return categorias;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setCategorias(String categorias) {
-		this.categorias = categorias;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	//to string
-
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", sku=" + sku + ", descripcion=" + descripcion
-				+ ", precio=" + precio + ", img=" + img + ", categorias=" + categorias + "]";
+				+ ", precio=" + precio + ", categoria=" + categoria + ", img=" + img + "]";
 	}
+
+	
+
 
 	
 	

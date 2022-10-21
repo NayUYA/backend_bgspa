@@ -36,34 +36,7 @@ btnSubmit.addEventListener("click", function(e){
     let alerterror = document.getElementById("alertaerror");
     let formulario = document.getElementById("formulario"); 
 
-
-	//código para metodo fetch
-	let url= '/api/usuarios/';	
 	
-	//arreglo nuevo
-	   let data = {
-        nombre: nombre.value,
-        apellido: apellido.value,
-        telefono: telefono.value,
-        usuario: valorcorreo,
-        contrasena: valorcontrasena
-    	};
-		console.log(data);	
-	
-	//fetch
-	fetch(url,{
-		method: 'POST' ,
-		body: JSON.stringify(data),
-		headers:{
-			'Content-Type':'application/json'
-		}
-	}).then(res=> res.json())
-	.catch(error=> console.error('Error:', error))
-	//.then(response=> localStorage.setItem("clave",response));  //se omitio, ya que no se requere un registro en localStorage (es redundante).
-	
-	
-
-
 	
     //JSON Y LOCAL STORAGE
  /*   let arregloUsuario = {
@@ -177,12 +150,36 @@ btnSubmit.addEventListener("click", function(e){
     }
     confirmarContraseña(contrase);
 
-
+//código para metodo fetch
+	let url= '/api/usuarios/';	
+		//arreglo nuevo
+	   let data = {
+        nombre: nombre.value,
+        apellido: apellido.value,
+        telefono: telefono.value,
+        usuario: valorcorreo,
+        contrasena: valorcontrasena
+    	};
+		//console.log(data);	
+		
     //ALERTA GENERAL
     if (flag.nombre && flag.apellido && flag.telefono && flag.correoe && flag.contraseña && flag.valcontraseña){
-        cont++;
-        infoUsuario.push(arregloUsuario);
-        localStorage.setItem(key, JSON.stringify(infoUsuario));
+        //------------------------------------------
+	//fetch
+	fetch(url,{
+		method: 'POST' ,
+		body: JSON.stringify(data),
+		headers:{
+			'Content-Type':'application/json'
+		}
+	}).then(res=> res.json())
+	.catch(error=> console.error('Error:', error))
+	//.then(response=> localStorage.setItem("clave",response));  //se omitio, ya que no se requere un registro en localStorage (es redundante).
+	//-------------------------------------------
+	
+       // cont++;
+        //infoUsuario.push(arregloUsuario);
+       // localStorage.setItem(key, JSON.stringify(infoUsuario));
         AlertRegistro();
         formulario.reset();
         nombre.classList.remove("is-valid")
