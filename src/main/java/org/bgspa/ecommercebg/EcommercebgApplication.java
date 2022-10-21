@@ -4,7 +4,7 @@ import org.bgspa.ecommercebg.jwt.config.JwtFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class EcommercebgApplication {
@@ -13,7 +13,7 @@ public class EcommercebgApplication {
 		SpringApplication.run(EcommercebgApplication.class, args);
 	}//main
 	
-	@Bean //componente que nos ayuda a filtrar. Genera un filtro al priincipio cuando carga la aplicacion
+	//@Bean //componente que nos ayuda a filtrar. Genera un filtro al priincipio cuando carga la aplicacion
 	public FilterRegistrationBean<JwtFilter> jwtFilter(){
 		FilterRegistrationBean<JwtFilter> registrationBean = new FilterRegistrationBean<>();
 		registrationBean.setFilter(new JwtFilter());
