@@ -1,0 +1,96 @@
+/* EN DESARROLLO
+
+
+#contenedorBusqueda {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+
+  }
+
+  /*#lupacont {
+    position: absolute;
+    right: 20px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #lupa {
+    font-size: 20px;
+    color: #000;
+    cursor: pointer;
+    transition: all 300ms;
+    z-index: 10;
+  }
+
+ /* #lupa:hover {
+    color: blueviolet;
+  }
+
+  #barraBusqueda {
+    position: fixed;
+    top: -10px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    z-index: 9;
+    transition: all 600ms;
+    
+  }
+
+  #barraBusqueda input {
+    display: block;
+    width: 1110px;
+    margin: auto;
+    padding: 10px;
+    font-size: 18px;
+    /*outline: 0;
+    border-radius: 10px;
+    border: none;
+    background-color: #F9F9F9;
+  }
+
+  #cajaBusqueda {
+    position: fixed;
+    top: 165px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 8;
+    overflow: hidden;
+    display: none;
+  }
+
+  #cajaBusqueda li a {
+    display: block;
+    width: 1110px;
+    padding: 12px;
+  }
+
+  #cajaBusqueda li a:hover {
+    background-color: rgb(225, 200, 248);
+  }
+
+  #cover {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    background-color: (1, 1, 1, 0.5);
+    z-index: 7;
+    display: none;
+  }
+
+  body {
+    background-color: bisque;
+  }
+
+  header {
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 12;
+  }*/
